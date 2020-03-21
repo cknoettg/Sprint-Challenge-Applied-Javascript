@@ -22,19 +22,9 @@ let myObj2 = axios.get("https://lambda-times-backend.herokuapp.com/articles")
     console.log(response);
     //may need to do some chaining here
     //will call items individually for now, and may loop later
-
-    //failed experiment
-    // let keys = Object.keys(response.data.articles);
-    // console.log(keys); //this does print out our articles
-    // for (let i=0;i<keys.length;i++){
-    //   //console.log(Object.values(keys));
-      
-    //     console.log(keys);
-    //     cards.appendChild(articleCreator(keys));
-      
-    // }
-    //sample individual item for reference
-    //loop through every item in javascript, etc.
+    //Object.keys() didn't work
+    
+    //loop through every item in subheaders - javascript, etc.
     response.data.articles.javascript.forEach(item => {
         console.log(item);
         cards.appendChild(articleCreator(item));
@@ -52,11 +42,8 @@ let myObj2 = axios.get("https://lambda-times-backend.herokuapp.com/articles")
         cards.appendChild(articleCreator(item));
     })
     //items captured during this pass above - headlines
-
-    //underneath headlines, we have headline, authorPhoto, authorName
-
-    
-  }) //end then 1
+    //underneath headlines, we have headline, authorPhoto, authorName    
+  }) //end then
   .catch(err => {
     console.log(err);
   })
@@ -67,7 +54,7 @@ function articleCreator(dataObj) {
   let author = document.createElement("div");
   let imgDiv = document.createElement("div");
   let img = document.createElement("img");
-  let span = document.createElement("span");
+  let spanner = document.createElement("span");
 
   card.classList.add("card");
   headline.classList.add("headline");
@@ -75,13 +62,16 @@ function articleCreator(dataObj) {
   imgDiv.classList.add("img-container");
 
   //headline.textContent = dataObj.[articles].[subheaders].headline;
+  headline.textContent = dataObj.headline;
   //img.src = dataObj.[articles].[subheaders].authorPhoto;
+  img.src = dataObj.authorPhoto;
   //span.textContent = "By", dataObj.[articles].[subheaders].authorName;
+  spanner.textContent = `By ${dataObj.authorName}`;
 
   card.appendChild(headline);
   card.appendChild(author);
   author.appendChild(imgDiv);
-  author.appendChild(span);
+  author.appendChild(spanner);
   imgDiv.appendChild(img);
 
   return card;
