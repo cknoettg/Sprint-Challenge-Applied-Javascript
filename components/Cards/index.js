@@ -22,13 +22,39 @@ let myObj2 = axios.get("https://lambda-times-backend.herokuapp.com/articles")
     console.log(response);
     //may need to do some chaining here
     //will call items individually for now, and may loop later
-    let keys = Object.keys(response.data.articles);
-    console.log(keys);
 
+    //failed experiment
+    // let keys = Object.keys(response.data.articles);
+    // console.log(keys); //this does print out our articles
+    // for (let i=0;i<keys.length;i++){
+    //   //console.log(Object.values(keys));
+      
+    //     console.log(keys);
+    //     cards.appendChild(articleCreator(keys));
+      
+    // }
     //sample individual item for reference
-    // response.data.articles.javascript.forEach(item => {
-    //     cards.appendChild(articleCreator(item));
-    // })
+    //loop through every item in javascript, etc.
+    response.data.articles.javascript.forEach(item => {
+        console.log(item);
+        cards.appendChild(articleCreator(item));
+    })
+    response.data.articles.bootstrap.forEach(item => {
+        cards.appendChild(articleCreator(item));
+    })
+    response.data.articles.technology.forEach(item => {
+        cards.appendChild(articleCreator(item));
+    })
+    response.data.articles.jquery.forEach(item => {
+        cards.appendChild(articleCreator(item));
+    })
+    response.data.articles.node.forEach(item => {
+        cards.appendChild(articleCreator(item));
+    })
+    //items captured during this pass above - headlines
+
+    //underneath headlines, we have headline, authorPhoto, authorName
+
     
   }) //end then 1
   .catch(err => {
