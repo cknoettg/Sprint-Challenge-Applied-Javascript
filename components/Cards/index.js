@@ -23,8 +23,9 @@ let myObj2 = axios.get("https://lambda-times-backend.herokuapp.com/articles")
     //may need to do some chaining here
     //will call items individually for now, and may loop later
     //Object.keys() didn't work
-    
+
     //loop through every item in subheaders - javascript, etc.
+    //in Github project, we had simple headers - this was a level more complex
     response.data.articles.javascript.forEach(item => {
         console.log(item);
         cards.appendChild(articleCreator(item));
