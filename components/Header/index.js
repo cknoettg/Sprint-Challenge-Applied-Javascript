@@ -19,7 +19,7 @@ function Header() {
     span1.classList.add("date");
     span2.classList.add("temp");
   
-    span1.textContent = "MARCH 28, 2019";
+    span1.textContent = "SMARCH 28, 2019";
     //Unicode UTF-8 chart: https://www.utf8-chartable.de/
     span2.textContent = "98\u00B0";
   
